@@ -1,4 +1,5 @@
 <template>
+    <!--页面顶部搜索框-->
     <div class="header">
       <div class="header-left">
         <!--使用图标字体来显示图标-->

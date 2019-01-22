@@ -1,4 +1,5 @@
 <template>
+  <!--轮播图-->
   <div class="wrapper">
     <swiper :options="swiperOption">
       <!-- 遍历生成轮播图 -->
@@ -47,7 +48,7 @@ export default {
     overflow: hidden;
     width: 100%;
     height: 0;
-    padding-bottom: 27%;
+    padding-bottom: 26.5%;
     background: #ccc;
 
     .swiper-img {
