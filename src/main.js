@@ -6,6 +6,7 @@ import router from './router'
 import fastClick from 'fastclick'
 import './assets/styles/reset.css' // 页面重置样式
 import './assets/styles/border.css' // 防止1像素边框问题
+import './assets/styles/iconfont.css' // 图标字体
 
 Vue.config.productionTip = false
 // 启用fastClick，解决点击事件300毫秒延迟问题
