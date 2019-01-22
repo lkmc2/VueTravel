@@ -1,5 +1,10 @@
 <template>
-    <div>home</div>
+  <!--template的根元素只能有一个-->
+  <div>
+    <div class="home">never</div>
+    <!--跳转到/list对应路由的页面-->
+    <router-link to="/list" class="home">跳转</router-link>
+  </div>
 </template>
 
 <script>
@@ -9,5 +14,7 @@ export default {
 </script>
 
 <style scoped>
-
+  .home {
+    font-size: 50px;
+  }
 </style>
