@@ -1,0 +1,6 @@
+// 文字过长显示省略号
+@mixin ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
