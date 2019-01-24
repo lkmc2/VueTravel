@@ -1,9 +1,10 @@
 <template>
   <!--轮播图-->
   <div class="wrapper">
-    <swiper :options="swiperOption">
+    <!--为了防止未请求到数据时以空数组渲染组件，使用v-if判断，当数组非空时才创建轮播图组件-->
+    <swiper :options="swiperOption" v-if="showSwiper">
       <!-- 遍历生成轮播图 -->
-      <swiper-slide v-for="item of swiperList" :key="item.id">
+      <swiper-slide v-for="item of list" :key="item.id">
         <img class="swiper-img" :src="item.imgUrl">
       </swiper-slide>
 
@@ -16,21 +17,22 @@
 <script>
 export default {
   name: 'HomeSwiper',
+  // 接收父组件传来的数据到属性list中
+  props: {
+    list: Array
+  },
   data () {
     return {
       swiperOption: {
         pagination: '.swiper-pagination',
         loop: true
-      },
-      swiperList: [
-        {
-          id: '0001',
-          imgUrl: 'http://img1.qunarzz.com/piao/fusion/1811/a8/cb43c4ac6c215d02.jpg_750x200_83dee994.jpg'
-        }, {
-          id: '0002',
-          imgUrl: 'http://mp-piao-admincp.qunarzz.com/mp_piao_admin_mp_piao_admin/admin/20191/e9b6ede83785c7673eb1bcda5a78f123.jpg_750x200_0e6d0de9.jpg'
-        }
-      ]
+      }
+    }
+  },
+  computed: {
+    showSwiper () {
+      // 判断数组是否为空
+      return this.list.length
     }
   }
 }
