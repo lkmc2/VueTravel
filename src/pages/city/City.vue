@@ -3,9 +3,15 @@
     <div>
       <city-header></city-header>
       <city-search></city-search>
-      <!--将请求到的城市数据传给子组件-->
-      <city-list :cities="cities" :hotCities="hotCities"></city-list>
-      <city-alphabet :cities="cities"></city-alphabet>
+      <!--将请求到的城市数据传给子组件，并将侧边字母栏所点击的字母传给子组件-->
+      <city-list
+        :cities="cities"
+        :hotCities="hotCities"
+        :letter="letter"></city-list>
+      <!--City监听子组件触发的change事件，由City组件的handleLetterChange方法处理-->
+      <city-alphabet
+        :cities="cities"
+        @change="handleLetterChange"></city-alphabet>
     </div>
 </template>
 
@@ -26,8 +32,9 @@ export default {
   },
   data () {
     return {
-      cities: { },
-      hotCities: []
+      cities: { }, // 所有城市
+      hotCities: [], // 热门城市
+      letter: '' // 侧边字母栏点击的字母
     }
   },
   methods: {
@@ -44,9 +51,11 @@ export default {
         const data = res.data
         this.cities = data.cities
         this.hotCities = data.hotCities
-
-        console.log(this.cities)
       }
+    },
+    // 处理侧边字母栏组件触发的change事件
+    handleLetterChange (letter) {
+      this.letter = letter
     }
   },
   mounted () {

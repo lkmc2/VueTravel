@@ -12,6 +12,7 @@
           </div>
         </div>
       </div>
+
       <div class="area">
         <div class="title border-topbottom">热门城市</div>
         <div class="button-list">
@@ -20,7 +21,13 @@
           </div>
         </div>
       </div>
-      <div class="area" v-for="(item, key) of cities" :key="key">
+
+      <!--使用ref绑定某个字母对应的区域，如：字母A对应的区域-->
+      <div class="area"
+            v-for="(item, key) of cities"
+            :key="key"
+            :ref="key"
+      >
         <!--英文下标-->
         <div class="title border-topbottom">{{key}}</div>
         <!--下标对应的城市名数组-->
@@ -40,11 +47,23 @@ export default {
   // 从父组件接收的属性
   props: {
     cities: Object,
-    hotCities: Array
+    hotCities: Array,
+    letter: String
   },
   mounted () {
     // 从引用数组$refs获取名为wrapper的引用的dom节点
     this.scroll = new BScroll(this.$refs.wrapper)
+  },
+  watch: {
+    // 监听letter属性，当父组件传来侧边字母栏点击的字母时，会调用该方法
+    letter () {
+      if (this.letter) {
+        // 获取当前字母对应的引用区域
+        const element = this.$refs[this.letter][0]
+        // 滑动到对应字母的区域
+        this.scroll.scrollToElement(element)
+      }
+    }
   }
 }
 </script>

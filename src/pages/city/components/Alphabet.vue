@@ -1,7 +1,11 @@
 <template>
     <!--侧边栏字母表组件-->
     <ul class="list">
-      <li class="item" v-for="(item, key) of cities" :key="key">
+      <li
+          class="item"
+          v-for="(item, key) of cities"
+          :key="key"
+          @click="handleLetterClick">
         {{key}}
       </li>
     </ul>
@@ -13,6 +17,13 @@ export default {
   // 从父组件传来的属性
   props: {
     cities: Object
+  },
+  methods: {
+    // 处理侧边字母栏的点击事件
+    handleLetterClick (event) {
+      // Alphabet组件触发change事件，事件参数为点击的字母
+      this.$emit('change', event.target.innerText)
+    }
   }
 }
 </script>
