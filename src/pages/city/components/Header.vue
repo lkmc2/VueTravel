@@ -1,4 +1,5 @@
 <template>
+    <!--城市选择页面Header-->
     <div class="header">
       城市选择
       <!--跳转到首页的页面-->
