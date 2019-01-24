@@ -63,7 +63,6 @@ export default {
   @import '../../../assets/styles/mixins';
 
   .title {
-    margin-top: .25rem;
     line-height: .48rem;
     background: #ccc;
     text-indent: .2rem;
