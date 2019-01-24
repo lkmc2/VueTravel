@@ -69,7 +69,7 @@ export default {
 
   .title {
     margin-top: .25rem;
-    line-height: .5rem;
+    line-height: .48rem;
     background: #ccc;
     text-indent: .2rem;
   }
