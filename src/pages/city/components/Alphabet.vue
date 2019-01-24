@@ -1,19 +1,19 @@
 <template>
     <!--侧边栏字母表组件-->
     <ul class="list">
-      <li class="item">A</li>
-      <li class="item">A</li>
-      <li class="item">A</li>
-      <li class="item">A</li>
-      <li class="item">A</li>
-      <li class="item">A</li>
-      <li class="item">A</li>
+      <li class="item" v-for="(item, key) of cities" :key="key">
+        {{key}}
+      </li>
     </ul>
 </template>
 
 <script>
 export default {
-  name: 'CityAlphabet'
+  name: 'CityAlphabet',
+  // 从父组件传来的属性
+  props: {
+    cities: Object
+  }
 }
 </script>
 
