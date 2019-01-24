@@ -35,7 +35,7 @@ export default {
 
   .header {
     display: flex;
-    line-height: .86rem;
+    line-height: $headerHigh;
     background-color: $bgColor;
     color: #fff;
 
