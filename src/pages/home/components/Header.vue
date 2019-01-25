@@ -12,8 +12,8 @@
       <!--页面跳转到/city对应的路由页面-->
       <router-link to="/city">
         <div class="header-right">
-          <!--this.$store.state代表数据交换插件Vuex.Store存储的数据-->
-          {{this.$store.state.city}}
+          <!--this.$store.state.city代表数据交换插件Vuex.Store存储的数据-->
+          {{this.city}}
           <span class="iconfont arrow-icon">&#xe64a;</span>
         </div>
       </router-link>
@@ -21,8 +21,14 @@
 </template>
 
 <script>
+import { mapState } from 'vuex' // vuex状态获取器
+
 export default {
-  name: 'HomeHeader'
+  name: 'HomeHeader',
+  computed: {
+    // 将获取城市信息的函数设置到计算属性中，然后可以直接使用this.city获取城市信息
+    ...mapState(['city'])
+  }
 }
 </script>
 

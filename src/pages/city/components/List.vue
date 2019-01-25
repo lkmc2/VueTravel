@@ -9,7 +9,7 @@
         <div class="button-list">
           <div class="button-wrapper">
             <!--this.$store.state代表数据交换插件Vuex.Store存储的数据-->
-            <div class="button">{{this.$store.state.city}}</div>
+            <div class="button">{{this.currentCity}}</div>
           </div>
         </div>
       </div>
@@ -50,6 +50,7 @@
 
 <script>
 import BScroll from 'better-scroll'
+import { mapState } from 'vuex' // vuex状态获取器
 
 export default {
   name: 'CityList',
@@ -73,6 +74,12 @@ export default {
       // 通过代码执行页面跳转，跳转到首页
       this.$router.push('/')
     }
+  },
+  computed: {
+    // 将获取城市信息的函数设置到计算属性中，然后可以直接使用this.currentCity获取城市信息
+    ...mapState({
+      currentCity: 'city'
+    })
   },
   watch: {
     // 监听letter属性，当父组件传来侧边字母栏点击的字母时，会调用该方法
