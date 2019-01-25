@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex' // 模块数据交换插件
 import state from './state' // 状态信息文件
-import action from './action' // 用户触发的动作
+import actions from './action' // 用户触发的动作
 import mutations from './mutations' // 数据转变操作
 
 // 启用Vuex插件
@@ -17,9 +17,9 @@ Vue.use(Vuex)
 // 导出Vuex的存储数据
 export default new Vuex.Store({
   // state中的数据每次刷新页面都会重置，所以需要保存数据到本地存储
-  state: state,
+  state,
   // 用户触发的动作
-  actions: action,
+  actions,
   // 数据转变操作
-  mutations: mutations
+  mutations
 })
