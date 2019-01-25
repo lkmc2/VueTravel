@@ -2,7 +2,7 @@
     <!--城市选择页面-->
     <div>
       <city-header></city-header>
-      <city-search></city-search>
+      <city-search :cities="cities"></city-search>
       <!--将请求到的城市数据传给子组件，并将侧边字母栏所点击的字母传给子组件-->
       <city-list
         :cities="cities"
