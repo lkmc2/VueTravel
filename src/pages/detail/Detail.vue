@@ -1,11 +1,18 @@
 <template>
     <!--详情页-->
-    <div>detail</div>
+    <div>
+      <detail-banner></detail-banner>
+    </div>
 </template>
 
 <script>
+import DetailBanner from './components/Banner' // 横幅广告组件
+
 export default {
-  name: 'Detail'
+  name: 'Detail',
+  components: {
+    DetailBanner
+  }
 }
 </script>
 
