@@ -5,6 +5,7 @@ import App from './App'
 import router from './router'
 import fastClick from 'fastclick'
 import VueAwesomeSwiper from 'vue-awesome-swiper' // 轮播图组件
+import store from './store' // 引入Vuex数据交换插件
 import './assets/styles/reset.css' // 页面重置样式
 import './assets/styles/border.css' // 防止1像素边框问题
 import './assets/styles/iconfont.css' // 图标字体
@@ -21,6 +22,7 @@ Vue.use(VueAwesomeSwiper)
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })
