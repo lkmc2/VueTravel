@@ -14,7 +14,8 @@ Vue.use(Vuex)
 // 导出Vuex的存储数据
 export default new Vuex.Store({
   state: {
-    city: '北京'
+    // 默认城市优先从本地储存中获取，否则就是北京
+    city: localStorage.city || '北京'
   },
   // 用户触发的动作
   actions: {
@@ -31,6 +32,9 @@ export default new Vuex.Store({
     changeCity (state, city) {
       // 修改state对象中的city数据
       state.city = city
+
+      // 在本地存储中保存city数据
+      localStorage.city = city
     }
   }
 })
