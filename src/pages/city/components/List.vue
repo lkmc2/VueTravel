@@ -17,7 +17,11 @@
       <div class="area">
         <div class="title border-topbottom">热门城市</div>
         <div class="button-list">
-          <div class="button-wrapper" v-for="item of hotCities" :key="item.id">
+          <div class="button-wrapper"
+                v-for="item of hotCities"
+                :key="item.id"
+                @click="handleCityClick(item.name)"
+          >
             <div class="button">{{item.name}}</div>
           </div>
         </div>
@@ -51,9 +55,12 @@ export default {
     hotCities: Array,
     letter: String
   },
-  mounted () {
-    // 从引用数组$refs获取名为wrapper的引用的dom节点
-    this.scroll = new BScroll(this.$refs.wrapper)
+  methods: {
+    // 点击热门城市点击事件
+    handleCityClick (city) {
+      // 触发全局数据交换插件Vuex.Store中名为changeCity的action动作，参数传入用户点击的城市
+      this.$store.dispatch('changeCity', city)
+    }
   },
   watch: {
     // 监听letter属性，当父组件传来侧边字母栏点击的字母时，会调用该方法
@@ -65,6 +72,10 @@ export default {
         this.scroll.scrollToElement(element)
       }
     }
+  },
+  mounted () {
+    // 从引用数组$refs获取名为wrapper的引用的dom节点
+    this.scroll = new BScroll(this.$refs.wrapper)
   }
 }
 </script>
