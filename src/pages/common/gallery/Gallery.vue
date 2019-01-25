@@ -1,16 +1,12 @@
 <template>
   <!--画廊组件-->
-  <div class="container">
+  <div class="container" @click="handleGalleryClick">
     <div class="wrapper">
       <!--轮播图控件-->
       <swiper :options="swiperOptions">
         <!-- 遍历生成轮播图 -->
-        <swiper-slide>
-          <img class="gallery-img" src="http://img1.qunarzz.com/sight/p0/201212/24/711e05d23489891893835fbb.png_r_800x800_0222ecaa.png">
-        </swiper-slide>
-
-        <swiper-slide>
-          <img class="gallery-img" src="http://img1.qunarzz.com/sight/p0/1412/c6/b7291d0b777df685f63c9b1d0aa32ed8.water.jpg_r_800x800_7426da49.jpg">
+        <swiper-slide v-for="(item, index) of imgs" :key="index">
+          <img class="gallery-img" :src="item">
         </swiper-slide>
 
         <!-- Optional controls -->
@@ -24,12 +20,31 @@
 <script>
 export default {
   name: 'CommonGallery',
+  // 以下是从父组件接收的属性
+  props: {
+    imgs: {
+      type: Array,
+      // 当父组件没有传递type属性的值时，使用如下默认值
+      default () {
+        return []
+      }
+    }
+  },
   data () {
     return {
       swiperOptions: {
         pagination: '.swiper-pagination', // 分页指示器组件的类名
-        paginationType: 'fraction' // 显示成数字指示器
+        paginationType: 'fraction', // 显示成数字指示器
+        observeParents: true, // 当父元素变化时刷新控件
+        observer: true // 当自身元素发生变化时刷新控件
       }
+    }
+  },
+  methods: {
+    // 处理画廊被点击时的事件
+    handleGalleryClick () {
+      // 触发close事件给父组件接收
+      this.$emit('close')
     }
   }
 }
@@ -66,7 +81,7 @@ export default {
 
       .swiper-pagination {
         color: #fff;
-        bottom: -1rem;
+        bottom: -3rem;
       }
     }
   }

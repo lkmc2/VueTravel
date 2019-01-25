@@ -1,7 +1,7 @@
 <template>
     <!--广告横幅-->
     <div>
-      <div class="banner">
+      <div class="banner" @click="handleBannerClick">
         <img class="banner-img" src="//img1.qunarzz.com/sight/p0/201212/24/711e05d23489891893835fbb.png_600x330_10f147c1.png">
 
         <div class="banner-info">
@@ -14,7 +14,13 @@
         </div>
       </div>
 
-      <common-gallery></common-gallery>
+      <!--为子组件传入画廊的图片，画廊默认是隐藏的，点击Banner时才弹出-->
+      <!--Banner接收从子组件触发的close事件，调用handleGalleryClose方法处理-->
+      <common-gallery
+              :imgs="imgs"
+              v-show="showGallery"
+              @close="handleGalleryClose"
+      ></common-gallery>
     </div>
 </template>
 
@@ -23,8 +29,26 @@ import CommonGallery from '../../common/gallery/Gallery' // 画廊组件
 
 export default {
   name: 'DetailBanner',
+  data () {
+    return {
+      showGallery: false, // 是否显示画廊控件
+      imgs: ['http://img1.qunarzz.com/sight/p0/201212/24/711e05d23489891893835fbb.png_r_800x800_0222ecaa.png', 'http://img1.qunarzz.com/sight/p0/1412/c6/b7291d0b777df685f63c9b1d0aa32ed8.water.jpg_r_800x800_7426da49.jpg']
+    }
+  },
   components: {
     CommonGallery
+  },
+  methods: {
+    // 处理Banner被点击时的事件
+    handleBannerClick () {
+      // 显示画廊
+      this.showGallery = true
+    },
+    // 处理画廊被点击时的事件
+    handleGalleryClose () {
+      // 隐藏画廊
+      this.showGallery = false
+    }
   }
 }
 </script>
