@@ -69,6 +69,9 @@ export default {
       // 这里为了简单直接触发mutation数据转换操作
       // 触发全局数据交换插件Vuex.Store中名为changeCity的mutation数据转换操作，参数传入用户点击的城市
       this.$store.commit('changeCity', city)
+
+      // 通过代码执行页面跳转，跳转到首页
+      this.$router.push('/')
     }
   },
   watch: {
