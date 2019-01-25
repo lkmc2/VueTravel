@@ -12,7 +12,8 @@
       <!--页面跳转到/city对应的路由页面-->
       <router-link to="/city">
         <div class="header-right">
-          {{this.city}}
+          <!--this.$store.state代表数据交换插件Vuex.Store存储的数据-->
+          {{this.$store.state.city}}
           <span class="iconfont arrow-icon">&#xe64a;</span>
         </div>
       </router-link>
@@ -21,11 +22,7 @@
 
 <script>
 export default {
-  name: 'HomeHeader',
-  // 接收父组件传来的数据到属性city中
-  props: {
-    city: String
-  }
+  name: 'HomeHeader'
 }
 </script>
 

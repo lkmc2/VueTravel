@@ -8,7 +8,8 @@
         <div class="title border-topbottom">当前城市</div>
         <div class="button-list">
           <div class="button-wrapper">
-            <div class="button">北京</div>
+            <!--this.$store.state代表数据交换插件Vuex.Store存储的数据-->
+            <div class="button">{{this.$store.state.city}}</div>
           </div>
         </div>
       </div>
