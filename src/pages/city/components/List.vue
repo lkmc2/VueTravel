@@ -50,7 +50,7 @@
 
 <script>
 import BScroll from 'better-scroll'
-import { mapState } from 'vuex' // vuex状态获取器
+import { mapState, mapMutations } from 'vuex' // vuex状态获取器，mutations数据转变操作获取器
 
 export default {
   name: 'CityList',
@@ -69,11 +69,16 @@ export default {
 
       // 这里为了简单直接触发mutation数据转换操作
       // 触发全局数据交换插件Vuex.Store中名为changeCity的mutation数据转换操作，参数传入用户点击的城市
-      this.$store.commit('changeCity', city)
+      // this.$store.commit('changeCity', city)
+      this.changeCity(city)
 
       // 通过代码执行页面跳转，跳转到首页
       this.$router.push('/')
-    }
+    },
+    // 将mutations的changeCity方法映射到methods中，
+    // 之后可以直接使用this.changeCity方法
+    // 来代替this.$store.commit方法来调用mutations中的changeCity方法
+    ...mapMutations(['changeCity'])
   },
   computed: {
     // 将获取城市信息的函数设置到计算属性中，然后可以直接使用this.currentCity获取城市信息
