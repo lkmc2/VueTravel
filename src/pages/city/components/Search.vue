@@ -16,7 +16,9 @@
           <!--显示搜索到的结果-->
           <li class="search-item border-bottom"
               v-for="item of list"
-              :key="item.id">
+              :key="item.id"
+              @click="handleCityClick(item.name)"
+          >
             {{item.name}}
           </li>
           <!--搜索结果长度为0时才显示-->
@@ -43,6 +45,18 @@ export default {
       keyword: '', // 关键词
       list: [],
       timer: null // 定时器
+    }
+  },
+  methods: {
+    // 城市点击事件
+    handleCityClick (city) {
+      // 一般是先触发action，然后在action再触发mutation数据转换操作
+      // 触发全局数据交换插件Vuex.Store中名为changeCity的action动作，参数传入用户点击的城市
+      // this.$store.dispatch('changeCity', city)
+
+      // 这里为了简单直接触发mutation数据转换操作
+      // 触发全局数据交换插件Vuex.Store中名为changeCity的mutation数据转换操作，参数传入用户点击的城市
+      this.$store.commit('changeCity', city)
     }
   },
   computed: {

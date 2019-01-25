@@ -36,7 +36,11 @@
         <!--英文下标-->
         <div class="title border-topbottom">{{key}}</div>
         <!--下标对应的城市名数组-->
-        <div class="item-list" v-for="innerItem of item" :key="innerItem.id">
+        <div class="item-list"
+              v-for="innerItem of item"
+             :key="innerItem.id"
+             @click="handleCityClick(innerItem.name)"
+        >
           <div class="item border-bottom">{{innerItem.name}}</div>
         </div>
       </div>
@@ -56,10 +60,15 @@ export default {
     letter: String
   },
   methods: {
-    // 点击热门城市点击事件
+    // 城市点击事件
     handleCityClick (city) {
+      // 一般是先触发action，然后在action再触发mutation数据转换操作
       // 触发全局数据交换插件Vuex.Store中名为changeCity的action动作，参数传入用户点击的城市
-      this.$store.dispatch('changeCity', city)
+      // this.$store.dispatch('changeCity', city)
+
+      // 这里为了简单直接触发mutation数据转换操作
+      // 触发全局数据交换插件Vuex.Store中名为changeCity的mutation数据转换操作，参数传入用户点击的城市
+      this.$store.commit('changeCity', city)
     }
   },
   watch: {
