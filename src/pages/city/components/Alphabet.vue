@@ -1,12 +1,13 @@
 <template>
     <!--侧边栏字母表组件，ref表示当前dom的引用名称-->
+    <!--使用prevent阻止@touchstart事件的默认行为，防止滑动侧边栏出现浏览器的干预-->
     <ul class="list">
       <li
           class="item"
           v-for="item of letters"
           :key="item"
           :ref="item"
-          @touchstart="handleTouchStart"
+          @touchstart.prevent="handleTouchStart"
           @touchmove="handleTouchMove"
           @touchend="handleTouchEnd"
           @click="handleLetterClick">
