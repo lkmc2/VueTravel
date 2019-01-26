@@ -16,18 +16,22 @@
         </div>
       </div>
 
-      <!--为子组件传入画廊的图片，画廊默认是隐藏的，点击Banner时才弹出-->
-      <!--Banner接收从子组件触发的close事件，调用handleGalleryClose方法处理-->
-      <common-gallery
-              :imgs="galleryImgs"
-              v-show="showGallery"
-              @close="handleGalleryClose"
-      ></common-gallery>
+      <!--为画廊组件设置动画，在fade-animation标签内的组件将会以插槽的形式放入fade-animation组件中-->
+      <fade-animation>
+        <!--为子组件传入画廊的图片，画廊默认是隐藏的，点击Banner时才弹出-->
+        <!--Banner接收从子组件触发的close事件，调用handleGalleryClose方法处理-->
+        <common-gallery
+          :imgs="galleryImgs"
+          v-show="showGallery"
+          @close="handleGalleryClose"
+        ></common-gallery>
+      </fade-animation>
     </div>
 </template>
 
 <script>
 import CommonGallery from '../../common/gallery/Gallery' // 画廊组件
+import FadeAnimation from '../../common/fade/FadeAnimation' // 动画效果组件
 
 export default {
   name: 'DetailBanner',
@@ -43,7 +47,8 @@ export default {
     }
   },
   components: {
-    CommonGallery
+    CommonGallery,
+    FadeAnimation
   },
   methods: {
     // 处理Banner被点击时的事件
