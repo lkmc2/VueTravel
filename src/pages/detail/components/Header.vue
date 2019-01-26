@@ -61,9 +61,15 @@ export default {
       }
     }
   },
+  // 页面被激活时调用此函数
   activated () {
     // 监听页面滚动事件
     window.addEventListener('scroll', this.handleScroll)
+  },
+  // 页面关闭时调用此函数
+  deactivated () {
+    // 移除对页面滚动事件的监听，防止对其他页面造成影响
+    window.removeEventListener('scroll', this.handleScroll)
   }
 }
 </script>
