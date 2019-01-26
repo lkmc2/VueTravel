@@ -24,5 +24,9 @@ export default new Router({
       name: 'Detail', // 详情页
       component: Detail
     }
-  ]
+  ],
+  // 设置页面切换时，始终回到页面顶部，防止页面联动时的影响
+  scrollBehavior (to, from, savedPosition) {
+    return { x: 0, y: 0 }
+  }
 })
