@@ -1,0 +1,25 @@
+{
+  "ret": true,
+  "data": {
+    "sightName": "南宁海底世界",
+    "bannerImg": "//img1.qunarzz.com/sight/p0/201212/24/711e05d23489891893835fbb.png_600x330_10f147c1.png",
+    "galleryImgs": ["http://img1.qunarzz.com/sight/p0/201212/24/711e05d23489891893835fbb.png_r_800x800_0222ecaa.png", "http://img1.qunarzz.com/sight/p0/1412/c6/b7291d0b777df685f63c9b1d0aa32ed8.water.jpg_r_800x800_7426da49.jpg"],
+    "categoryList": [{
+        "title": "成人票",
+        "children": [{
+          "title": "成人三馆联票",
+          "children": [{
+            "title": "成人三馆联票 - 东兴连锁店销售"
+          }]
+        },{
+          "title": "成人五馆联票"
+        }]
+      }, {
+        "title": "学生票"
+      }, {
+        "title": "儿童票"
+      }, {
+        "title": "特惠票"
+      }]
+  }
+}
